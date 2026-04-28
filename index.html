@@ -30,103 +30,109 @@
       --col-CTCPR:    #E8350A;
     }
 
-    html, body { height: 100%; font-family: 'Source Sans 3', sans-serif; background: var(--panel-bg); color: var(--text-main); overflow: hidden; }
+    html { height: 100%; overflow: hidden; }
+    body {
+      height: 100%; overflow: hidden;
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--panel-bg); color: var(--text-main);
+      display: flex; flex-direction: column;
+    }
 
     #header {
-      height: 56px; background: var(--header-bg);
+      flex-shrink: 0;
+      height: 48px; background: var(--header-bg);
       display: flex; align-items: center;
-      padding: 0 20px; gap: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      position: relative; z-index: 10;
+      padding: 0 16px; gap: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 10;
     }
-    #header .icon { font-size: 22px; flex-shrink: 0; }
+    #header .icon { font-size: 20px; flex-shrink: 0; }
     #header h1 {
-      font-family: 'Oswald', sans-serif; font-size: 13.5px; font-weight: 600;
-      letter-spacing: 1.3px; text-transform: uppercase; color: #fff; line-height: 1.25;
+      font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 600;
+      letter-spacing: 1.2px; text-transform: uppercase; color: #fff; line-height: 1.25;
     }
 
-    #app { display: flex; height: calc(100vh - 56px); }
+    #app { flex: 1; min-height: 0; display: flex; overflow: hidden; }
 
+    /* ── Panel ── */
     #panel {
-      width: 680px; min-width: 680px;
+      width: 340px; min-width: 340px; flex-shrink: 0;
       background: var(--panel-bg);
       border-right: 1px solid var(--panel-border);
       display: flex; flex-direction: column;
-      overflow-y: auto; padding: 18px 16px; gap: 16px;
-    }
-    .panel-section { display: flex; flex-direction: column; gap: 7px; }
-    .panel-label {
-      font-family: 'Oswald', sans-serif; font-size: 11px;
-      letter-spacing: 1.6px; text-transform: uppercase; color: var(--text-muted);
+      overflow: hidden; padding: 12px 12px; gap: 10px;
     }
 
-    .periode-wrap { display: flex; flex-direction: column; gap: 8px; }
-    .periode-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted); }
+    .panel-section { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+    .panel-section.flex-fill { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+
+    .panel-label {
+      font-family: 'Oswald', sans-serif; font-size: 10px;
+      letter-spacing: 1.4px; text-transform: uppercase; color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .periode-wrap { display: flex; flex-direction: column; gap: 6px; }
+    .periode-labels { display: flex; justify-content: space-between; font-size: 9px; color: var(--text-muted); }
     input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; height: 4px; }
     .periode-current {
-      font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+      font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700;
       color: var(--accent); text-align: center; letter-spacing: 2px;
     }
 
     #btn-play {
       background: var(--accent); border: none; border-radius: 6px;
       color: #fff; font-family: 'Oswald', sans-serif;
-      font-size: 13px; letter-spacing: 1px;
-      padding: 8px 16px; cursor: pointer; transition: background 0.2s; width: 100%;
+      font-size: 11px; letter-spacing: 1px;
+      padding: 6px 12px; cursor: pointer; transition: background 0.2s; width: 100%;
+      flex-shrink: 0;
     }
     #btn-play:hover { background: #4a8bc4; }
 
-    .classe-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .classe-pills { display: flex; flex-wrap: wrap; gap: 5px; }
     .pill {
-      padding: 5px 11px; border-radius: 20px; font-size: 12px;
+      padding: 4px 9px; border-radius: 20px; font-size: 11px;
       cursor: pointer; border: 2px solid transparent;
       font-family: 'Source Sans 3', sans-serif; font-weight: 600;
       transition: all 0.15s; opacity: 0.55;
     }
     .pill.active { opacity: 1; border-color: #374151; }
 
-    .divider { border: none; border-top: 1px solid var(--panel-border); }
+    .divider { border: none; border-top: 1px solid var(--panel-border); flex-shrink: 0; }
 
     #legend-box {
-      background: var(--box-bg);
-      border: 1px solid var(--panel-border);
-      border-radius: 8px; padding: 10px 12px;
-      box-shadow: var(--box-shadow);
-      display: flex; flex-direction: column; gap: 6px;
+      background: var(--box-bg); border: 1px solid var(--panel-border);
+      border-radius: 8px; padding: 8px 10px; box-shadow: var(--box-shadow);
+      display: flex; flex-direction: column; gap: 5px; flex-shrink: 0;
     }
-    .legend-row { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--text-label); line-height: 1.4; }
-    .legend-swatch { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; opacity: 0.9; margin-top: 1px; }
+    .legend-row { display: flex; align-items: flex-start; gap: 7px; font-size: 11px; color: var(--text-label); line-height: 1.4; }
+    .legend-swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; opacity: 0.9; margin-top: 1px; }
 
+    /* ── Chart inline flex ── */
     #chart-wrap {
-      background: var(--box-bg);
-      border: 1px solid var(--panel-border);
-      border-radius: 8px; padding: 12px; flex: 1;
-      box-shadow: var(--box-shadow);
+      background: var(--box-bg); border: 1px solid var(--panel-border);
+      border-radius: 8px; padding: 10px; box-shadow: var(--box-shadow);
       cursor: pointer; position: relative; transition: border-color 0.2s;
+      flex: 1; min-height: 0; display: flex; flex-direction: column;
     }
     #chart-wrap:hover { border-color: var(--accent); }
     #chart-expand-hint {
-      position: absolute; top: 8px; right: 10px;
-      font-size: 10px; color: var(--text-muted);
-      pointer-events: none;
+      position: absolute; top: 6px; right: 8px;
+      font-size: 9px; color: var(--text-muted); pointer-events: none;
     }
-    #myChart { width: 100% !important; }
+    .chart-canvas-wrap { flex: 1; min-height: 0; position: relative; }
+    .chart-canvas-wrap canvas { position: absolute; inset: 0; }
 
-    /* Modal */
+    /* ── Modal ── */
     #chart-modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(0,0,0,0.5);
-      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.5); align-items: center; justify-content: center;
     }
     #chart-modal-overlay.open { display: flex; }
     #chart-modal {
-      background: #ffffff;
-      border: 1px solid var(--panel-border);
+      background: #ffffff; border: 1px solid var(--panel-border);
       border-radius: 12px; padding: 20px 24px 24px;
-      width: min(92vw, 860px);
-      max-height: 82vh;
-      display: flex; flex-direction: column;
-      position: relative;
+      width: min(92vw, 860px); max-height: 82vh;
+      display: flex; flex-direction: column; position: relative;
       box-shadow: 0 8px 40px rgba(0,0,0,0.18);
     }
     #chart-modal-title {
@@ -143,7 +149,20 @@
     #chart-modal-canvas-wrap { flex: 1; min-height: 0; position: relative; }
     #myChartModal { width: 100% !important; height: 100% !important; }
 
-    #map { flex: 1; position: relative; }
+    /* ── Resizer ── */
+    #resizer {
+      width: 6px; flex-shrink: 0;
+      background: var(--panel-border);
+      cursor: col-resize; transition: background 0.15s; position: relative; z-index: 5;
+    }
+    #resizer:hover, #resizer.dragging { background: var(--accent); }
+    #resizer::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px; height: 32px; background: rgba(0,0,0,0.15); border-radius: 2px;
+    }
+
+    #map { flex: 1; position: relative; overflow: hidden; }
     #map-container { width: 100%; height: 100%; }
 
     .ua-marker {
@@ -154,16 +173,15 @@
     }
 
     #basemap-switch {
-      position: absolute; top: 10px; right: 10px; z-index: 5;
+      position: absolute; top: 8px; right: 8px; z-index: 5;
       display: flex; background: rgba(255,255,255,0.95);
-      border: 1px solid #d1d5db; border-radius: 6px;
-      overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      border: 1px solid #d1d5db; border-radius: 5px;
+      overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
     .bm-btn {
-      padding: 6px 13px; font-family: 'Source Sans 3', sans-serif;
-      font-size: 12px; color: var(--text-muted); cursor: pointer;
-      border: none; background: transparent;
-      border-right: 1px solid #d1d5db;
+      padding: 5px 10px; font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px; color: var(--text-muted); cursor: pointer;
+      border: none; background: transparent; border-right: 1px solid #d1d5db;
       transition: background 0.15s, color 0.15s; white-space: nowrap;
     }
     .bm-btn:last-child { border-right: none; }
@@ -174,21 +192,17 @@
       position: absolute; inset: 0; background: #f9f9f9;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: 16px; z-index: 100; transition: opacity 0.5s;
+      gap: 14px; z-index: 100; transition: opacity 0.5s;
     }
     #loading.hidden { opacity: 0; pointer-events: none; }
-    #loading-msg { font-family: 'Oswald', sans-serif; letter-spacing: 2px; font-size: 13px; color: var(--text-muted); text-transform: uppercase; }
+    #loading-msg { font-family: 'Oswald', sans-serif; letter-spacing: 2px; font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
     .spinner {
-      width: 40px; height: 40px;
-      border: 3px solid #e5e7eb;
-      border-top-color: var(--accent);
-      border-radius: 50%; animation: spin 0.8s linear infinite;
+      width: 36px; height: 36px; border: 3px solid #e5e7eb;
+      border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    #panel::-webkit-scrollbar { width: 5px; }
-    #panel::-webkit-scrollbar-track { background: transparent; }
-    #panel::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+    #panel::-webkit-scrollbar { display: none; }
   </style>
 </head>
 <body>
@@ -245,15 +259,19 @@
 
     <hr class="divider" />
 
-    <div class="panel-section" style="flex:1;">
+    <div class="panel-section flex-fill">
       <span class="panel-label">Superficie (ha) par UA</span>
       <div id="chart-wrap" title="Cliquer pour agrandir">
         <span id="chart-expand-hint">⤢ agrandir</span>
-        <canvas id="myChart" height="260"></canvas>
+        <div class="chart-canvas-wrap">
+          <canvas id="myChart"></canvas>
+        </div>
       </div>
     </div>
 
   </div>
+
+  <div id="resizer"></div>
 
   <div id="map">
     <div id="map-container"></div>
@@ -316,7 +334,7 @@ function fmtNum(n) {
 function setLoadingMsg(msg) { document.getElementById('loading-msg').textContent = msg; }
 function hexToRgb(hex) { return [1,3,5].map(i => parseInt(hex.slice(i,i+2),16)).join(','); }
 
-function makeChartConfig() {
+function makeChartConfig(aspectRatio) {
   return {
     type: 'bar',
     data: {
@@ -324,25 +342,23 @@ function makeChartConfig() {
       datasets: PERIODES.map(p => ({ label: p, data: [0,0,0,0], backgroundColor: '#d1d5db', borderRadius: 3 }))
     },
     options: {
-      responsive: true, maintainAspectRatio: true,
+      responsive: true, maintainAspectRatio: aspectRatio,
       animation: { duration: 300 },
       plugins: {
         legend: { display: false },
         tooltip: { callbacks: { label: c => c.dataset.label + ' : ' + fmtNum(c.raw) + ' ha' } }
       },
       scales: {
-        x: { ticks: { color:'#6b7280', font:{ family:'Source Sans 3', size:11, weight:'600' } }, grid: { color:'rgba(0,0,0,0.05)' } },
-        y: { ticks: { color:'#6b7280', font:{ family:'Source Sans 3', size:10 }, callback: v => fmtNum(v) }, grid: { color:'rgba(0,0,0,0.06)' } }
+        x: { ticks: { color:'#6b7280', font:{ family:'Source Sans 3', size:10, weight:'600' } }, grid: { color:'rgba(0,0,0,0.05)' } },
+        y: { ticks: { color:'#6b7280', font:{ family:'Source Sans 3', size:9 }, callback: v => fmtNum(v) }, grid: { color:'rgba(0,0,0,0.06)' } }
       }
     }
   };
 }
 
 function initChart() {
-  chartInst = new Chart(document.getElementById('myChart').getContext('2d'), makeChartConfig());
-  const modalCfg = makeChartConfig();
-  modalCfg.options.maintainAspectRatio = false;
-  chartModalInst = new Chart(document.getElementById('myChartModal').getContext('2d'), modalCfg);
+  chartInst      = new Chart(document.getElementById('myChart').getContext('2d'), makeChartConfig(false));
+  chartModalInst = new Chart(document.getElementById('myChartModal').getContext('2d'), makeChartConfig(false));
 }
 
 function applyChartData(inst) {
@@ -440,6 +456,7 @@ function startPlay() {
   }, 1500);
 }
 function stopPlay() { clearInterval(playTimer); playTimer = null; document.getElementById('btn-play').textContent = '▶ Animer'; }
+
 function setPeriode(idx) {
   currentPeriode = PERIODES[idx];
   document.getElementById('slider-periode').value = idx;
@@ -482,6 +499,32 @@ document.querySelectorAll('.bm-btn').forEach(btn => {
 });
 
 initChart(); updateChart(); initMap();
+
+// ── Resizable panel ──
+(function() {
+  const resizer = document.getElementById('resizer');
+  const panel   = document.getElementById('panel');
+  let dragging = false, startX = 0, startW = 0;
+  resizer.addEventListener('mousedown', (e) => {
+    dragging = true; startX = e.clientX; startW = panel.offsetWidth;
+    resizer.classList.add('dragging');
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const newW = Math.min(Math.max(startW + (e.clientX - startX), 200), window.innerWidth * 0.7);
+    panel.style.width = newW + 'px';
+    panel.style.minWidth = newW + 'px';
+    if (map) map.resize();
+  });
+  document.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false; resizer.classList.remove('dragging');
+    document.body.style.cursor = ''; document.body.style.userSelect = '';
+    if (map) map.resize();
+  });
+})();
 </script>
 </body>
 </html>
